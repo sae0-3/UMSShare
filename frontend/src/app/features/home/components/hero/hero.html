@@ -1,0 +1,54 @@
+<section class="bg-gradient-to-br from-primary-100/20 via-white to-primary-200/20 py-8 md:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="text-4xl md:text-6xl font-bold text-neutral-900 mb-6">
+        Recursos Académicos
+        <span class="text-primary-500 block md:inline">Colaborativos</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
+        UMSShare+ es una plataforma hecha por estudiantes para estudiantes. Accedé a material académico, exámenes y
+        apuntes organizados por semestre y materia — todo en un solo lugar.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="py-8 lg:py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:justify-center gap-y-8 gap-x-16">
+      <div>
+        <h2 class="text-3xl font-bold mb-6 text-neutral-900">
+          El <span class="text-secondary-500">problema</span> que todos conocemos
+        </h2>
+        <app-list-hero [list]="problemList" iconName="x" color="#ff2b37" />
+      </div>
+
+      <div>
+        <h2 class="text-3xl font-bold mb-6 text-neutral-900">
+          Nuestra <span class="text-primary-500">solución</span>
+        </h2>
+        <app-list-hero [list]="solutionList" iconName="check" color="#00b4ff" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="py-8 lg:py-16 bg-neutral-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-neutral-900 mb-4">
+        ¿Qué hace <span class="text-primary-500">especial</span> a UMSShare+?
+      </h2>
+      <p class="text-xl text-neutral-600 max-w-2xl mx-auto">
+        Características pensadas por estudiantes, para estudiantes
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      @for (feature of features; track $index) {
+      <app-card-hero [title]="feature.title" [description]="feature.description" [iconName]="feature.iconName"
+        [color]="feature.color" />
+      }
+    </div>
+  </div>
+</section>

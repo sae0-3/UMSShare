@@ -1,0 +1,8 @@
+<div class="space-y-4 text-neutral-600">
+  @for (item of list(); track $index) {
+  <div class="flex items-start gap-4">
+    <lucide-icon [name]="iconName()" [color]="color()" />
+    <p class="leading-relaxed">{{item}}</p>
+  </div>
+  }
+</div>

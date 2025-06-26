@@ -1,0 +1,10 @@
+<div
+  class="w-full h-full bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 group border border-gray-100">
+  <div class="w-14 h-14 rounded-lg flex items-center justify-center mb-6 transition-colors"
+    [style.backgroundColor]="color() + '22'">
+    <lucide-icon [name]="iconName()" class="w-7 h-7" [color]="color()" />
+  </div>
+
+  <h3 class="text-xl font-semibold text-neutral-900 mb-4">{{title()}}</h3>
+  <p class="text-neutral-600 leading-relaxed">{{description()}}</p>
+</div>
