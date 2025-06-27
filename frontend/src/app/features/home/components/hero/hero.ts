@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { LucideAngularModule } from 'lucide-angular';
 
 import { CardHero } from '../card-hero/card-hero';
 import { ListHero } from '../list-hero/list-hero';
 
 @Component({
   selector: 'app-hero',
-  imports: [CardHero, ListHero],
+  imports: [CardHero, ListHero, LucideAngularModule, RouterLink],
   templateUrl: './hero.html',
 })
 export class Hero {

@@ -1,4 +1,5 @@
 import {
+  BookOpen,
   Check,
   Clipboard,
   Cloud,
@@ -17,7 +18,8 @@ export const LUCIDE_ICONS = {
   Zap,
   ShieldCheck,
   X,
-  Check
+  Check,
+  BookOpen
 };
 
 export type LucideIconName = keyof typeof LUCIDE_ICONS;
