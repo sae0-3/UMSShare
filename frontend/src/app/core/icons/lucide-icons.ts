@@ -1,9 +1,15 @@
 import {
+  AudioWaveform,
   BookOpen,
   Check,
+  ChevronDown,
   Clipboard,
+  Clock,
   Cloud,
+  FileText,
+  GalleryVerticalEnd,
   Lock,
+  Search,
   ShieldCheck,
   Users,
   X,
@@ -11,15 +17,21 @@ import {
 } from 'lucide-angular';
 
 export const LUCIDE_ICONS = {
-  Clipboard,
-  Users,
-  Lock,
-  Cloud,
-  Zap,
-  ShieldCheck,
-  X,
+  AudioWaveform,
+  BookOpen,
   Check,
-  BookOpen
+  Clipboard,
+  Clock,
+  Cloud,
+  FileText,
+  GalleryVerticalEnd,
+  Lock,
+  ShieldCheck,
+  Users,
+  X,
+  Zap,
+  Search,
+  ChevronDown,
 };
 
 export type LucideIconName = keyof typeof LUCIDE_ICONS;

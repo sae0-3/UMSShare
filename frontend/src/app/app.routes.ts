@@ -5,5 +5,5 @@ import { SubjectsDashboard } from './features/subjects-dashboard/subjects-dashbo
 
 export const routes: Routes = [
   { path: '', component: Home },
-  { path: 'material', component: SubjectsDashboard },
+  { path: 'materias', component: SubjectsDashboard },
 ];

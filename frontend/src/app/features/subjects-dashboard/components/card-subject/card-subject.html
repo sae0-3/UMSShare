@@ -1,0 +1,76 @@
+<div
+  class="animate-slide-up backdrop-blur-lg rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-200 h-full flex flex-col justify-between gap-5 bg-white/50">
+  <h3 class="font-semibold text-lg text-gray-900 leading-tight">
+    {{ name() }}
+  </h3>
+
+  <div class="text-gray-500 text-sm flex flex-col gap-2">
+    <div class="flex items-start gap-4 flex-wrap">
+      <div class="flex items-center gap-2 pt-1">
+        <lucide-icon name="gallery-vertical-end" class="w-4 h-4" />
+        <span class="font-medium text-xs uppercase">
+          Carreras
+        </span>
+      </div>
+
+      <div class="flex flex-wrap gap-1.5">
+        @for (career of careers(); track $index) {
+        <span
+          class="px-2.5 py-1 text-xs font-medium rounded-md whitespace-nowrap shadow-xs border border-gray-100 bg-white/95 border-l-2 text-neutral-800"
+          [style.borderLeftColor]="career.color">
+          {{ career.name }}
+        </span>
+        }
+      </div>
+    </div>
+
+    <div class="flex items-start gap-4 flex-wrap">
+      <div class="flex items-center gap-2 pt-1">
+        <lucide-icon name="audio-waveform" class="w-4 h-4" />
+        <span class="font-medium text-xs uppercase">
+          Niveles
+        </span>
+      </div>
+
+      <div class="flex flex-wrap gap-1.5">
+        @for (level of levels(); track $index) {
+        <span class="px-2.5 py-1 text-xs font-medium rounded-md whitespace-nowrap shadow-xs"
+          [style.backgroundColor]="level.color + '18'" [style.color]="level.color"
+          [style.border]="'1px solid ' + level.color + '25'">
+          {{ level.name }}
+        </span>
+        }
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <lucide-icon class="w-4 h-4" name="file-text" />
+      <span>
+        @if(resources() > 0) {
+        {{ resources() }} {{ resources() === 1 ? 'recurso' : 'recursos' }}
+        } @else {
+        Sin recursos disponibles
+        }
+      </span>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <lucide-icon class="w-4 h-4" name="clock" />
+      <span>
+        @if(days() === 0) {
+        Actualizado hoy
+        } @else if(days() === 1) {
+        Actualizado ayer
+        } @else {
+        Actualizado hace {{ days() }} días
+        }
+      </span>
+    </div>
+  </div>
+
+  <button
+    class="w-full text-center font-medium py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 bg-primary-500 hover:bg-primary-600 text-white cursor-pointer disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
+    [disabled]="resources() === 0">
+    Ver contenido
+  </button>
+</div>
