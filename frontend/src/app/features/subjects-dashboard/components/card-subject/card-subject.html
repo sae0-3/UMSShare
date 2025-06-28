@@ -14,7 +14,7 @@
       </div>
 
       <div class="flex flex-wrap gap-1.5">
-        @for (career of careers(); track $index) {
+        @for (career of careers(); track career.id) {
         <span
           class="px-2.5 py-1 text-xs font-medium rounded-md whitespace-nowrap shadow-xs border border-gray-100 bg-white/95 border-l-2 text-neutral-800"
           [style.borderLeftColor]="career.color">

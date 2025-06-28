@@ -7,11 +7,13 @@
 
     <app-search-subject />
 
+    @if (subjects$ | async; as subjects) {
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       @for (subject of subjects; track $index) {
-      <app-card-subject [name]="subject.name" [careers]="subject.careers" [levels]="subject.levels"
-        [resources]="subject.resources" [updated_at]="subject.updated_at" />
+      <app-card-subject [name]="subject.name" [careers]="subject.careers" [resources]="subject.resources"
+        [updated_at]="subject.updated_at" />
       }
     </div>
+    }
   </div>
 </main>
