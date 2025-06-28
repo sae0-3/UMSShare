@@ -11,11 +11,13 @@ import { ApiService, Career } from '../../../../core/services/api-service';
   templateUrl: './search-subject.html',
 })
 export class SearchSubject {
+  private apiService = inject(ApiService);
+
   careers$!: Observable<Career[]>;
   searchTerm = signal<string>('');
-  search = output<string>();
 
-  private apiService = inject(ApiService);
+  search = output<string>();
+  career = output<number>();
 
   constructor() {
     effect(() => {
@@ -27,5 +29,10 @@ export class SearchSubject {
     const input = event.target as HTMLInputElement;
     this.searchTerm.set(input.value);
     this.search.emit(this.searchTerm());
+  }
+
+  onOptionChange(event: Event) {
+    const select = event.target as HTMLSelectElement;
+    this.career.emit(Number(select.value));
   }
 }

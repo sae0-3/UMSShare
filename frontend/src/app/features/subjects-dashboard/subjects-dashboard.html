@@ -5,10 +5,10 @@
       <p class="text-lg text-gray-600">Encuentra todo el contenido académico organizado por materia</p>
     </div>
 
-    <app-search-subject (search)="onSearch($event)" />
+    <app-search-subject (search)="onSearch($event)" (career)="onCareerChange($event)" />
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      @for (subject of subjects(); track $index) {
+      @for (subject of subjects(); track subject.id) {
       <app-card-subject [name]="subject.name" [careers]="subject.careers" [resources]="subject.resources"
         [updated_at]="subject.updated_at" />
       }

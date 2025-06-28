@@ -1,4 +1,4 @@
-import { Component, inject, linkedSignal, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 
 import { ApiService, Subject } from '../../core/services/api-service';
 import { CardSubject } from './components/card-subject/card-subject';
@@ -13,16 +13,16 @@ export class SubjectsDashboard {
   private apiService = inject(ApiService);
   private allSubjects = signal<Subject[]>([]);
   private searchTerm = signal<string>('');
+  private careerSelected = signal<number>(-1);
 
-  subjects = linkedSignal<Subject[]>(() => {
+  subjects = computed<Subject[]>(() => {
     const term = normalize(this.searchTerm());
+    const careerId = this.careerSelected();
 
-    if (term) {
-      return this.allSubjects().filter(subject =>
-        normalize(subject.name).includes(term));
-    } else {
-      return this.allSubjects();
-    }
+    return this.allSubjects().filter(subject =>
+      (term === '' || normalize(subject.name).includes(term)) &&
+      (careerId === -1 || subject.careers.some(career => career.id === careerId))
+    );
   });
 
   constructor() {
@@ -33,6 +33,10 @@ export class SubjectsDashboard {
 
   onSearch(searchTerm: string) {
     this.searchTerm.set(searchTerm);
+  }
+
+  onCareerChange(careerId: number) {
+    this.careerSelected.set(careerId);
   }
 }
 
