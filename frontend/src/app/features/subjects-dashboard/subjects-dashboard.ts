@@ -38,6 +38,7 @@ export class SubjectsDashboard {
 
 function normalize(text: string): string {
   return text
+    .trim()
     .toLocaleLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '');
