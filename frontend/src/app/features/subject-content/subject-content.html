@@ -1,0 +1,287 @@
+<div class="min-h-screen bg-gray-50">
+  <div class="bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="py-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="text-3xl font-bold text-gray-900">
+              {{ currentSubject().name }}
+            </h1>
+            <p class="text-sm text-gray-600 mt-1">
+              {{ currentSubject().code }} - {{ currentSubject().description }}
+            </p>
+          </div>
+          <button
+            class="cursor-pointer inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200"
+            (click)="toggleUploadMode()"
+          >
+            <lucide-angular name="plus" class="w-4 h-4 mr-2"></lucide-angular>
+            Agregar Material
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    @if (showUpload()) {
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-8">
+      <div class="px-6 py-4 border-b border-gray-200">
+        <div class="flex items-center justify-between">
+          <h2 class="text-lg font-semibold text-gray-900">
+            Subir Nuevo Material
+          </h2>
+          <button
+            (click)="toggleUploadMode()"
+            class="text-gray-400 hover:text-gray-600 transition-colors duration-200"
+          >
+            <lucide-angular name="X" class="w-5 h-5"></lucide-angular>
+          </button>
+        </div>
+      </div>
+
+      <div class="p-6">
+        <div class="mb-6">
+          <p class="text-sm font-medium text-gray-700 mb-3">
+            ¿Qué tipo de material deseas subir?
+          </p>
+          <div class="flex space-x-4">
+            <label class="flex items-center">
+              <input
+                type="radio"
+                value="link"
+                [(ngModel)]="uploadType"
+                class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300"
+              />
+              <span class="ml-2 text-sm text-gray-700">Solo Link</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                type="radio"
+                value="file"
+                [(ngModel)]="uploadType"
+                class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300"
+              />
+              <span class="ml-2 text-sm text-gray-700">Solo Archivo</span>
+            </label>
+            <label class="flex items-center">
+              <input
+                type="radio"
+                value="both"
+                [(ngModel)]="uploadType"
+                class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300"
+              />
+              <span class="ml-2 text-sm text-gray-700">Ambos</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          @if(uploadType === 'link' || uploadType === 'both'){
+          <div class="border border-gray-200 rounded-lg p-4">
+            <div class="flex items-center mb-4">
+              <lucide-angular
+                name="link"
+                class="w-5 h-5 text-primary-600 mr-2"
+              ></lucide-angular>
+              <h3 class="text-lg font-medium text-gray-900">Agregar Link</h3>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Título
+                </label>
+                <input
+                  type="text"
+                  [(ngModel)]="linkTitle"
+                  placeholder="Ej: Apuntes de Clase 1"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  URL
+                </label>
+                <input
+                  type="url"
+                  [(ngModel)]="linkUrl"
+                  placeholder="https://ejemplo.com"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                />
+              </div>
+            </div>
+          </div>
+          } @else if (uploadType === 'file' || uploadType === 'both'){
+          <div class="border border-gray-200 rounded-lg p-4">
+            <div class="flex items-center mb-4">
+              <lucide-angular
+                name="upload"
+                class="w-5 h-5 text-primary-600 mr-2"
+              ></lucide-angular>
+              <h3 class="text-lg font-medium text-gray-900">Subir Archivo</h3>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Título
+                </label>
+                <input
+                  type="text"
+                  [(ngModel)]="fileTitle"
+                  placeholder="Ej: Examen Parcial 2023"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Archivo
+                </label>
+                <div
+                  class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary-400 transition-colors duration-200"
+                >
+                  <lucide-angular
+                    name="upload"
+                    class="w-8 h-8 text-gray-400 mx-auto mb-2"
+                  ></lucide-angular>
+                  <p class="text-sm text-gray-600">
+                    Arrastra y suelta tu archivo aquí, o
+                  </p>
+                  <button
+                    class="mt-2 text-primary-600 hover:text-primary-700 text-sm font-medium"
+                  >
+                    selecciona un archivo
+                  </button>
+                  <p class="text-xs text-gray-500 mt-2">
+                    PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX (máx. 10MB)
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+
+        <div class="mt-6 flex justify-end">
+          <button
+            class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200"
+          >
+            <lucide-angular name="upload" class="w-5 h-5 mr-2"></lucide-angular>
+            Subir Material
+          </button>
+        </div>
+      </div>
+    </div>
+    }
+
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+      <div class="px-6 py-4 border-b border-gray-200">
+        <h2 class="text-lg font-semibold text-gray-900">
+          Materiales Disponibles
+        </h2>
+        <p class="text-sm text-gray-600 mt-1">
+          {{ materials().length }} materiales subidos
+        </p>
+      </div>
+
+      <div class="p-6">
+        @if(materials().length === 0){
+        <div class="text-center py-12">
+          <lucide-angular
+            name="file-text"
+            class="w-12 h-12 text-gray-400 mx-auto mb-4"
+          ></lucide-angular>
+          <p class="text-gray-500 text-lg">No hay materiales disponibles</p>
+          <p class="text-gray-400 text-sm">
+            Sé el primero en subir material para esta materia
+          </p>
+        </div>
+        } @else if(materials().length > 0){
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          @for (material of materials(); track material.id) {
+          <div
+            class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-200"
+          >
+            <div class="flex items-start justify-between mb-3">
+              <div class="flex items-center">
+                <div class="flex-shrink-0">
+                  @if (material.type === 'link') {
+                  <div
+                    class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center"
+                  >
+                    <lucide-angular
+                      name="link"
+                      class="w-5 h-5 text-primary-600"
+                    ></lucide-angular>
+                  </div>
+                  }@else if (material.type === 'file') {
+                  <div
+                    class="w-10 h-10 bg-secondary-100 rounded-lg flex items-center justify-center"
+                  >
+                    <lucide-angular
+                      name="file-text"
+                      class="w-5 h-5 text-secondary-600"
+                    ></lucide-angular>
+                  </div>
+                  }
+                </div>
+                <div class="ml-3">
+                  <h3 class="text-sm font-medium text-gray-900">
+                    {{ material.title }}
+                  </h3>
+                  <p class="text-xs text-gray-500">
+                    {{ material.uploadDate | date : "short" }}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <p class="text-xs text-gray-600">
+                Subido por: {{ material.uploadedBy }}
+              </p>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
+                [class]="
+                  material.type === 'link'
+                    ? 'bg-primary-100 text-primary-800'
+                    : 'bg-secondary-100 text-secondary-800'
+                "
+              >
+                {{ material.type === "link" ? "Link" : "Archivo" }}
+              </span>
+
+              <div class="flex space-x-2">
+                @if(material.type === 'link'){
+                <button
+                  class="text-primary-600 hover:text-primary-700 transition-colors duration-200"
+                >
+                  <lucide-angular
+                    name="external-link"
+                    class="w-4 h-4"
+                  ></lucide-angular>
+                </button>
+                } @else if (material.type === 'file') {
+                <button
+                  class="text-secondary-600 hover:text-secondary-700 transition-colors duration-200"
+                >
+                  <lucide-angular
+                    name="download"
+                    class="w-4 h-4"
+                  ></lucide-angular>
+                </button>
+                }
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
