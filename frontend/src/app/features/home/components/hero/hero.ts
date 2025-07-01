@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 
+import { GoogleSignIn } from '../../../../shared/components/google-sign-in/google-sign-in';
 import { CardHero } from '../card-hero/card-hero';
 import { ListHero } from '../list-hero/list-hero';
 
 @Component({
   selector: 'app-hero',
-  imports: [CardHero, ListHero, LucideAngularModule, RouterLink],
+  imports: [CardHero, ListHero, LucideAngularModule, RouterLink, GoogleSignIn],
   templateUrl: './hero.html',
 })
 export class Hero {
