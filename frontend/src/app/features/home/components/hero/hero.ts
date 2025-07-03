@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 
-import { GoogleSignIn } from '../../../../shared/components/google-sign-in/google-sign-in';
+import { GoogleSignIn } from '../../../../shared/components/google-sign-in';
 import { CardHero } from '../card-hero/card-hero';
 import { ListHero } from '../list-hero/list-hero';
 

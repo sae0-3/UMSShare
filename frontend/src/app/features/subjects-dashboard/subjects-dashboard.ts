@@ -1,12 +1,13 @@
 import { Component, computed, inject, signal } from '@angular/core';
 
 import { ApiService, Subject } from '../../core/services/api-service';
+import { Header } from '../../shared/components/header';
 import { CardSubject } from './components/card-subject/card-subject';
 import { SearchSubject } from './components/search-subject/search-subject';
 
 @Component({
   selector: 'app-subjects-dashboard',
-  imports: [CardSubject, SearchSubject],
+  imports: [CardSubject, SearchSubject, Header],
   templateUrl: './subjects-dashboard.html',
 })
 export class SubjectsDashboard {

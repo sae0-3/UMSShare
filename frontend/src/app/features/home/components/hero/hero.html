@@ -12,7 +12,7 @@
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
         <a routerLink="materias"
-          class="min-w-56 bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold border-2 border-primary-500 hover:border-primary-600 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl flex items-center gap-3 justify-center overflow-hidden cursor-pointer">
+          class="w-56 bg-primary-500 hover:bg-primary-600 text-white py-4 rounded-xl font-semibold border-2 border-primary-500 hover:border-primary-600 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl flex items-center gap-3 justify-center overflow-hidden cursor-pointer">
           <lucide-icon name="book-open" size="20" />
           <span>Explorar Contenido</span>
         </a>
@@ -20,7 +20,9 @@
         <div class="hidden sm:block w-px h-16 bg-gradient-to-b from-transparent via-gray-300 to-transparent"></div>
         <div class="sm:hidden w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
 
-        <app-google-sign-in />
+        <div class="w-56">
+          <app-google-sign-in />
+        </div>
       </div>
     </div>
   </div>
