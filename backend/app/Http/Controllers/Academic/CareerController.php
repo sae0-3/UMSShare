@@ -3,18 +3,20 @@
 namespace App\Http\Controllers\Academic;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Academic\CareerResource;
-use App\Services\Academic\CareerService;
+use App\Models\Career;
 use Illuminate\Http\Request;
 
 class CareerController extends Controller
 {
-    public function __construct(private CareerService $service) {}
-
     public function index()
     {
-        $careers = $this->service->getAllCareers();
-        return CareerResource::collection($careers);
+        $careers = Career::select('id', 'name', 'color')
+            ->orderBy('name')
+            ->get();
+
+        return response()->json([
+            'data' => $careers,
+        ]);
     }
 
     /**
