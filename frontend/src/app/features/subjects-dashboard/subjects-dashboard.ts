@@ -26,8 +26,8 @@ export class SubjectsDashboard {
   });
 
   constructor() {
-    this.apiService.getSubjects().subscribe(subjects => {
-      this.allSubjects.set(subjects);
+    this.apiService.getSubjects().subscribe(({ data }) => {
+      this.allSubjects.set(data);
     });
   }
 

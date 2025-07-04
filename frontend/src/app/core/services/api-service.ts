@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { environment } from '../../../environments/environment.development';
+
 export interface Subject {
   id: number;
   name: string;
@@ -30,16 +32,16 @@ export interface CareerWithLevel extends Career {
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl = 'http://localhost:3001';
+  private readonly baseUrl = environment.api.baseUrl;
   private http = inject(HttpClient);
 
   constructor() { }
 
-  getSubjects(): Observable<Subject[]> {
-    return this.http.get<Subject[]>(`${this.baseUrl}/subjects`);
+  getSubjects(): Observable<{ data: Subject[] }> {
+    return this.http.get<{ data: Subject[] }>(`${this.baseUrl}/subjects?per_page=9`);
   }
 
-  getCareers(): Observable<Career[]> {
-    return this.http.get<Career[]>(`${this.baseUrl}/careers`);
+  getCareers(): Observable<{ data: Career[] }> {
+    return this.http.get<{ data: Career[] }>(`${this.baseUrl}/careers`);
   }
 }

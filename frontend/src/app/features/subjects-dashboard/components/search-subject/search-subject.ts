@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, effect, inject, output, signal } from '@angular/core';
+import { Component, inject, output, signal } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { Observable } from 'rxjs';
 
@@ -20,9 +20,12 @@ export class SearchSubject {
   career = output<number>();
 
   constructor() {
-    effect(() => {
-      this.careers$ = this.apiService.getCareers();
-    })
+    this.apiService.getCareers().subscribe(({ data }) => {
+      this.careers$ = new Observable<Career[]>((subscriber) => {
+        subscriber.next(data);
+        subscriber.complete();
+      });
+    });
   }
 
   onInput(event: Event) {
