@@ -1,0 +1,23 @@
+<div class="bg-white border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="py-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-3xl font-bold text-gray-900">
+            {{ subject.name }}
+          </h1>
+          <p class="text-sm text-gray-600 mt-1">
+            {{ subject.code }} - {{ subject.description }}
+          </p>
+        </div>
+        <button
+          class="cursor-pointer inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200"
+          (click)="onToggleUpload()"
+        >
+          <lucide-angular name="plus" class="w-4 h-4 mr-2"></lucide-angular>
+          Agregar Material
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div
+  class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-200"
+>
+  <div class="flex items-start justify-between mb-3">
+    <div class="flex items-center">
+      <div class="flex-shrink-0">
+        @if (material.type === 'link') {
+        <div
+          class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center"
+        >
+          <lucide-angular
+            name="link"
+            class="w-5 h-5 text-primary-600"
+          ></lucide-angular>
+        </div>
+        }@else if (material.type === 'file') {
+        <div
+          class="w-10 h-10 bg-secondary-100 rounded-lg flex items-center justify-center"
+        >
+          <lucide-angular
+            name="file-text"
+            class="w-5 h-5 text-secondary-600"
+          ></lucide-angular>
+        </div>
+        }
+      </div>
+      <div class="ml-3">
+        <h3 class="text-sm font-medium text-gray-900">
+          {{ material.title }}
+        </h3>
+        <p class="text-xs text-gray-500">
+          {{ material.uploadDate | date : "short" }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <p class="text-xs text-gray-600">Subido por: {{ material.uploadedBy }}</p>
+  </div>
+
+  <div class="flex items-center justify-between">
+    <span
+      class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
+      [class]="
+        material.type === 'link'
+          ? 'bg-primary-100 text-primary-800'
+          : 'bg-secondary-100 text-secondary-800'
+      "
+    >
+      {{ material.type === "link" ? "Link" : "Archivo" }}
+    </span>
+
+    <div class="flex space-x-2">
+      @if(material.type === 'link'){
+      <button
+        class="text-primary-600 hover:text-primary-700 transition-colors duration-200"
+      >
+        <lucide-angular name="external-link" class="w-4 h-4"></lucide-angular>
+      </button>
+      } @else if (material.type === 'file') {
+      <button
+        class="text-secondary-600 hover:text-secondary-700 transition-colors duration-200"
+      >
+        <lucide-angular name="download" class="w-4 h-4"></lucide-angular>
+      </button>
+      }
+    </div>
+  </div>
+</div>

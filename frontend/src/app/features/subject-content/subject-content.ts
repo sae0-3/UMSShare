@@ -3,10 +3,20 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LucideAngularModule } from 'lucide-angular';
 import { Material, Subject } from './interfaces/content';
+import { SubjectHeader } from './components/subject-header/subject-header';
+import { MaterialUpload } from './components/material-upload/material-upload';
+import { MaterialList } from './components/material-list/material-list';
 
 @Component({
   selector: 'app-subject-content',
-  imports: [CommonModule, FormsModule, LucideAngularModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    LucideAngularModule,
+    SubjectHeader,
+    MaterialUpload,
+    MaterialList,
+  ],
   templateUrl: './subject-content.html',
 })
 export class SubjectContent implements OnInit {

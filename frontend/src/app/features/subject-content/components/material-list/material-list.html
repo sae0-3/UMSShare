@@ -1,0 +1,29 @@
+<div class="bg-white rounded-lg shadow-sm border border-gray-200">
+  <div class="px-6 py-4 border-b border-gray-200">
+    <h2 class="text-lg font-semibold text-gray-900">Materiales Disponibles</h2>
+    <p class="text-sm text-gray-600 mt-1">
+      {{ materials.length }} materiales subidos
+    </p>
+  </div>
+
+  <div class="p-6">
+    @if(materials.length === 0){
+    <div class="text-center py-12">
+      <lucide-angular
+        name="file-text"
+        class="w-12 h-12 text-gray-400 mx-auto mb-4"
+      ></lucide-angular>
+      <p class="text-gray-500 text-lg">No hay materiales disponibles</p>
+      <p class="text-gray-400 text-sm">
+        Sé el primero en subir material para esta materia
+      </p>
+    </div>
+    } @else if(materials.length > 0){
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      @for (material of materials; track material.id) {
+      <app-material-card [material]="material"></app-material-card>
+      }
+    </div>
+    }
+  </div>
+</div>
