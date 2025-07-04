@@ -8,7 +8,7 @@ export interface Subject {
   id: number;
   name: string;
   resources: number;
-  updated_at: string;
+  // updated_at: string;
   careers: CareerWithLevel[];
 }
 
