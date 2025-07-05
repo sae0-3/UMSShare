@@ -46,7 +46,13 @@ class CareerController extends Controller
 
     public function show(string $id)
     {
-        $career = Career::with(['subjects'])->findOrFail($id);
+        $career = Career::with(['subjects'])->find($id);
+
+        if (!$career) {
+            return response()->json([
+                'error' => 'Carrera no encontrada.',
+            ], 404);
+        }
 
         return response()->json([
             'data' => $career,
