@@ -14,6 +14,8 @@ class Career extends Model
         'color',
     ];
 
+    public $timestamps = false;
+
     public function subjects()
     {
         return $this->belongsToMany(Subject::class, 'career_subjects')

@@ -42,6 +42,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('academic_structure');
+        Schema::dropIfExists('careers');
+        Schema::dropIfExists('subjects');
+        Schema::dropIfExists('levels');
+        Schema::dropIfExists('career_subjects');
     }
 };
